@@ -1,28 +1,6 @@
-<?php
-
-echo "Kubernetes con base de datos MySQL <br>";
-
-$conn = new mysqli("mysql8-service", "root", ".sweetpwd.", "my_db");
-
-// Check connection
-
-if ($conn->connect_error) {
- die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT name FROM users";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-
-// output data of each row
-
-while($row = $result->fetch_assoc()) {
-  echo $row['name']."<br>";
-}
-
-} else {
- echo "0 results";
-}
-
-$conn->close();
+<form method="POST" action="noticia_controller.php">
+    Título<input name="titulo" type="text"/><br>
+    Contenido<textarea name="contenido"></textarea>
+    Autor<input name="autor" type="text"/><br>
+    <input type="submit" name="insertar_noticia"/>
+</form>
